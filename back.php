@@ -1,4 +1,5 @@
-			</td>
-		</tr>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
