@@ -12,7 +12,7 @@
 	}
 	if (empty($user_name) or empty($user_pass))
 	{
-		exit ("Не введено имя пользователя или пароль");
+		exit ("<h4>Не введено имя пользователя или пароль.</h4>");
 	}
 	{
 	$user_name = stripslashes($user_name);
@@ -31,7 +31,7 @@
 	$myrow = mysql_fetch_array($result);
 	if (empty($myrow['user_pass']))
 	{
-		exit ("Введенная пара логин-пароль не существует.");
+		exit ("<h4>Введенная пара логин-пароль не существует.<h4>");
 	}
 	else
 	{
@@ -40,12 +40,12 @@
 			$_SESSION['user_name'] = $myrow['user_name'];
 			$_SESSION['id'] = $myrow['id'];
 			$_SESSION['user_pass'] = $myrow['user_pass'];
-			echo "Вы успешно вошли на сайт!";
+			echo "<h4>Вы успешно вошли на сайт!<h4>";
 			exit("<html><head><meta http-equiv='Refresh' content='0; URL=index.php'></head></html>");
 		}
 		else
 		{
-			exit ("Извините, введенное имя пользователя или пароль неверны.");
+			exit ("<h4>Извините, введенное имя пользователя или пароль неверны.</h4>");
 		}
 	}
 ?>

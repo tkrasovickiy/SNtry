@@ -12,7 +12,7 @@
 	}
 	if (empty($user_name) or empty($user_pass))
 	{
-		exit ("Не введено имя пользователя или пароль!");
+		exit ("<h4>Не введено имя пользователя или пароль!</h4>");
 	}
 	$user_name = stripslashes($user_name);
 	$user_pass = stripslashes($user_pass);
@@ -23,11 +23,11 @@
 	
 	if (strlen($user_name)<3 or strlen($user_name)>15)
 	{
-		exit("Ограничение на имя пользователя: от 3 до 15 символов");
+		exit("<h4>Ограничение на имя пользователя: от 3 до 15 символов.</h4>");
 	}
 	if (strlen($user_pass)<3 or strlen($user_pass)>15)
 	{
-		exit("Ограничение на пароль: от 3 до 15 символов");
+		exit("<h4>Ограничение на пароль: от 3 до 15 символов.</h4>");
 	}
 	
 	$user_pass = md5($user_pass);
@@ -40,28 +40,14 @@
 	$myrow = mysql_fetch_array($result);
 	if (!empty($myrow['id']))
 	{
-		exit ("Пользователь с таким именем уже существет!");
+		exit ("<h4>Пользователь с таким именем уже существет!</h4>");
 	}
 	
 	if (!mysql_query("INSERT INTO users (user_name, user_pass) VALUES ('$user_name','$user_pass')"))
 	{
-		echo "Ошибка регистрации!";
+		echo "<h4>Ошибка регистрации!</h4>";
 		exit();
 	}
-	echo "<h3>Пользователь успешно добавлен! Вы можете войти на сайт.</h3>";
-	
-	/*if (mysql_query("SELECT * FROM users WHERE user_name like '" . $_POST['user_name'] . "'"))
-	{
-		echo "<h3>Пользователь с таким именем уже существует</h3>";
-		exit;
-	}
-	if (!mysql_query("INSERT INTO users (user_name, user_pass) VALUES ('" . $_POST['user_name'] . "', '" . $_POST['user_pass'] . "')"))
-	{
-		echo "<br>Ошибка добавления пользователя<br>";
-		echo mysql_errno();
-		echo mysql_error();
-		exit;
-	}
-	echo "<h3>Пользователь добавлен успешно</h3>";*/
+	echo "<h4>Пользователь успешно добавлен! Вы можете <a href='login.php'>войти на сайт</a>.</h4>";
 ?>
 <?php include "back.php" ?>
