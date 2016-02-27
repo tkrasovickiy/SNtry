@@ -1,5 +1,6 @@
 <?php include "head.php" ?>
 <H2>Главная</H2>
+<H4>Здесь будут выводиться новости</h4>
 <?php
 	include "bd.php";
 	

@@ -36,5 +36,5 @@
 					?>
 				</div>
 			</nav>
-			<div class="col-md-10">
+			<div class="col-md-8">
 			

@@ -1,16 +1,14 @@
 <?php include "head.php" ?>
-<h3>Вход в систему</h3>
-<form action="testreg.php" method="post">
-	<table>
-		<tr>
-			<td>Имя пользователя:</td>
-			<td><input type="text" name="user_name"></td>
-		</tr>
-		<tr>
-			<td>Пароль:</td>
-			<td><input type="password" name="user_pass"></td>
-		</tr>
-	</table>
-	<input type="submit" value="Войти">
+<h2>Вход в систему</h2>
+<form action="testreg.php" method="post" class="form-inline">
+	<div class="form-group">
+		<label class="sr-only">Имя пользователя</label>
+		<input type="text" name="user_name" class="form-control" placeholder="Имя пользователя">
+	</div>
+	<div class="form-group">
+		<label class="sr-only">Пароль</label>
+		<input type="password" name="user_pass" class="form-control" placeholder="Пароль">
+	</div>
+	<input type="submit" class="btn btn-default" value="Войти">
 </form>
 <?php include "back.php" ?>
