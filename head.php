@@ -13,7 +13,7 @@
 						<a class="navbar-brand" href="index.php">Главная</a>
 					</div>
 					<ul class="nav navbar-nav">
-						<li><a href="#">Пользователи</a></li>
+						<li><a href="all_users.php">Пользователи</a></li>
 						<li><a href="#">Новости</a></li>
 					</ul>
 					<?php
