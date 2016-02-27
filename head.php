@@ -2,29 +2,39 @@
 <html lang="ru">
 	<head>
 		<title>SocialNetwork: try</title>
-		<link href="bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
 		<?php session_start(); ?>
 		<div class="container">
-			<div class="row">
-				<div class="span2">
-					<ul class="nav nav-pills pull-left nav-stacked">
-						<li><a href="index.php">Главная</a></li>
-						<li><a href="#">Ссылка 1</a></li>
-						<li><a href="#">Ссылка 2</a></li>
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="index.php">Главная</a>
+					</div>
+					<ul class="nav navbar-nav">
+						<li><a href="#">Пользователи</a></li>
+						<li><a href="#">Новости</a></li>
 					</ul>
+					<?php
+						if (empty($_SESSION['user_name']) or empty($_SESSION['id']))
+						{ ?>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="login.php">Вход</a></li>
+							<li><a href="reg.php">Регистрация</a></li>
+						</ul>
+						<?php
+						}
+						else
+						{ ?>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="exit.php">Выход</a></li>
+						</ul>
+						<p class="navbar-text navbar-right">Вы вошли на сайт как <?php echo $_SESSION['user_name']; ?>.</p>
+						<?php
+						}
+					?>
 				</div>
-			<div class="span3">
-			<?php
-				if (empty($_SESSION['user_name']) or empty($_SESSION['id']))
-				{
-					echo "Вы вошли на сайт как гость.<br>
-					<a href='login.php'>Вход</a><br>
-					<a href='reg.php'>Регистрация</a><br>";
-				}
-				else
-				{
-					echo "Вы вошли на сайт как ".$_SESSION['user_name'].". <a href='exit.php'>(Выход)</a><br>";
-				}
-			?>
+			</nav>
+			<div class="col-md-10">
+			
