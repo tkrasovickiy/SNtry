@@ -17,16 +17,34 @@
 		exit("<h3>Страница доступна только авторизованным пользователям.</h3>");
 	}
 ?>
-<h2>Список пользователей</h2>
-<div class="list-group">
-	<?php
-		$result = mysql_query("SELECT user_name, id FROM users ORDER BY user_name");
-		$myrow = mysql_fetch_array($result);
-		do
-		{
-			printf("<a href='user_page.php?id=".$myrow['id']."' class='list-group-item'>".$myrow['user_name']."</a>");
-		}
-		while ($myrow = mysql_fetch_array($result));
-	?>
+<div class="panel panel-default">
+	<div class="panel-heading">Список пользователей</div>
+	<table class="table table-striped table-bordered">
+		<tr>
+			<td>#</td>
+			<td>Ник</td>
+			<td>Имя</td>
+			<td>Фамилия</td>
+		</tr>
+		<?php
+			$result = mysql_query("SELECT user_name, id FROM users ORDER BY user_name");
+			$myrow = mysql_fetch_array($result);
+			do
+			{ $i=1;
+			?>
+				<tr>
+					<td><?php echo $i; $i = $i+1; ?></td>
+					<td>
+						<a href="user_page.php?id=<?php echo $myrow['id']; ?>">
+							<?php echo $myrow['user_name'];?></a>
+					</td>
+					<td></td>
+					<td></td>
+				</tr>
+			<?php
+			}
+			while ($myrow = mysql_fetch_array($result));
+		?>
+	</table>
 </div>
 <?php include "back.php"?>

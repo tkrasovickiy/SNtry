@@ -2,6 +2,7 @@
 <html lang="ru">
 	<head>
 		<title>SocialNetwork: try</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=cp1251">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
@@ -28,13 +29,14 @@
 						else
 						{ ?>
 						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#">Настройки</a></li>
 							<li><a href="exit.php">Выход</a></li>
 						</ul>
-						<p class="navbar-text navbar-right">Вы вошли на сайт как <?php echo $_SESSION['user_name']; ?>.</p>
+						<p class="navbar-text navbar-right">Вы вошли на сайт как <?php echo $_SESSION['user_name']; ?></p>
 						<?php
 						}
 					?>
 				</div>
 			</nav>
-			<div class="col-md-8">
+			<div class="col-md-12">
 			
