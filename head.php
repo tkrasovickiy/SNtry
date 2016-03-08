@@ -32,7 +32,7 @@
 							<li><a href="#">Настройки</a></li>
 							<li><a href="exit.php">Выход</a></li>
 						</ul>
-						<p class="navbar-text navbar-right">Вы вошли на сайт как <?php echo $_SESSION['user_name']; ?></p>
+						<p class="navbar-text navbar-right">Вы вошли на сайт как <?php echo "<a href='user_page.php?id=".$_SESSION['id']."'>".$_SESSION['user_name']."</a>"; ?></p>
 						<?php
 						}
 					?>

@@ -6,32 +6,37 @@
 	if (!preg_match("|^[\d]+$|", $id)) {exit ("<p>Неверный формат запроса! Проверьте URL</p>");}
 	if (!empty($_SESSION['user_name']) and !empty($_SESSION['user_pass']))
 	{
-		if (empty($myrow2['id']))
-		{
-			exit ("Вход только для заргеистрированных пользователей");
-		}
-	}
-	else
-	{
-		exit ("Вход только для зарегистрированных пользователей");
-	}
+		$user_name = $_SESSION['user_name'];
+		$user_pass = $_SESSION['user_pass'];
+		$result2 = mysql_query("SELECT id FROM users WHERE user_name='$user_name' AND user_pass='$user_pass'");
+		$myrow2 = mysql_fetch_array($result2);
+		if (empty($myrow2['id'])) {exit ("Вход только для зарегистрированных пользователей");}}
+	else {exit ("Вход только для зарегистрированных пользователей");}
 	$result = mysql_query("SELECT * FROM users WHERE id='$id'");
 	$myrow = mysql_fetch_array($result);
-	if (empty($myrow['user_name']))
-	{
-		exit ("Пользователя не существует!");
-	}
+	if (empty($myrow['user_name'])) {exit ("Пользователя не существует!");}
 ?>
-<H2>Страница пользователя</H3>
 <?php
-	echo "<br><a href='user_page.php?id=$myrow2[id]'>Моя страница</a><br>";
 	if ($myrow['user_name']==$user_name)
 	{
-		echo "Это моя страница!";
+		echo "<h3>Это моя страница!<h3>";
 	}
 	else
 	{
-		echo "Это страница пользователя ".$myrow['user_name'];
+		echo "<h3>Это страница пользователя ".$myrow['user_name']."</h3>";
+	}
+?>
+<h2>Личные сообщения</h2>
+<?php
+	$tmp = mysql_query("SELECT * FROM messages WHERE reciever='$user_name' ORDER BY id DESC");
+	$messages = mysql_fetch_array($tmp);
+	if (!empty($messages['id']))
+	{
+		do
+		{
+			$sender = $messages['sender'];
+			$result4= mysql_query("SELECT ")
+		}
 	}
 ?>
 <?php include "back.php" ?>

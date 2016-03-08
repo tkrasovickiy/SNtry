@@ -29,8 +29,9 @@
 		<?php
 			$result = mysql_query("SELECT user_name, id FROM users ORDER BY user_name");
 			$myrow = mysql_fetch_array($result);
+			$i=1;
 			do
-			{ $i=1;
+			{
 			?>
 				<tr>
 					<td><?php echo $i; $i = $i+1; ?></td>
